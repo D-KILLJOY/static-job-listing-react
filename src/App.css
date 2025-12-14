@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "League Spartan";
+    src: url("../src/assets/League_Spartan/LeagueSpartan-VariableFont_wght.ttf")
+        format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@theme {
+    --color-c-green-400: hsl(180, 29%, 50%);
+    --color-c-green-50: hsl(180, 52%, 96%);
+    --color-c-gray-400: hsl(180, 8%, 52%);
+    --color-c-green-900: hsl(180, 14%, 20%);
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+}
