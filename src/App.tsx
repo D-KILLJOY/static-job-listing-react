@@ -43,11 +43,13 @@ function App() {
 
     return (
         <>
-            <header className="bg-[url(../public/images/bg-header-mobile.svg)] bg-center bg-cover w-full bg-c-green-400 h-40 md:bg-[url(../public/images/bg-header-desktop.svg)]"></header>
+            <header className="bg-[url(../public/images/bg-header-mobile.svg)] bg-center bg-cover w-full bg-c-green-400 h-39 md:bg-[url(../public/images/bg-header-desktop.svg)]">
+                <h1 className="hidden">Static Jobs</h1>
+            </header>
 
             <main className="bg-c-green-50 flow-root pt-8">
                 <div
-                    className={`rounded-md min-h-14 relative -mt-18 mb-7 py-5 ps-5 pe-7 bg-white flex items-center justify-between gap-5 w-9/10 mx-auto max-w-275 shadow-c-shadow ${filters.length < 1 ? "opacity-0 hidden" : "opacity-100 "}`}
+                    className={`rounded-md min-h-14 relative -mt-18 mb-7 py-5 ps-5 pe-7 bg-white flex items-center justify-between gap-5 w-9/10 mx-auto max-w-275 shadow-c-shadow ${filters.length < 1 ? "opacity-0 hidden" : "opacity-100 "} md:mb-0`}
                 >
                     <ul className="flex gap-4 flex-wrap">
                         {filters.map((filt) => (
@@ -78,7 +80,7 @@ function App() {
                 </div>
 
                 <section>
-                    <ul className="flex flex-col w-full items-center gap-10 p-6">
+                    <ul className="flex flex-col w-full items-center gap-10 p-6 py-7 md:gap-5.5 md:py-10">
                         {filteredJobs.map((job) => (
                             <li
                                 key={job.company}
@@ -109,10 +111,10 @@ function App() {
                                                 )}
                                             </div>
                                         </div>
-                                        <h2 className="font-bold text-c-green-900 md:text-[1.375rem] leading-none">
+                                        <h2 className="font-bold text-c-green-900 md:text-[1.375rem] leading-none cursor-pointer hover:text-c-green-400">
                                             {job.position}
                                         </h2>
-                                        <div className="flex text-c-gray-400 font-medium text-base leading-none gap-1 border-b pb-4.5 border-b-c-gray-400 md:text-[1.15rem] md:border-0 md:pb-0">
+                                        <div className="flex text-c-gray-400 font-medium text-base leading-none gap-1 border-b pb-4.5 border-b-c-gray-400 md:text-[1.08rem] md:border-0 md:pb-0 md:gap-3.75">
                                             <p className="after:content-['•'] after:mx-2 ">
                                                 {job.postedAt}
                                             </p>
