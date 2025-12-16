@@ -31,7 +31,7 @@ function App() {
         );
 
         setFilteredJobs(filtered);
-    }, [filters]);
+    }, [filters, allJobs]);
 
     function removeFilter(value: string) {
         setFilters(filters.filter((item) => item !== value));
@@ -41,20 +41,18 @@ function App() {
         setFilters((prev) => (prev.includes(value) ? prev : [...prev, value]));
     }
 
-    console.log(jobs);
-
     return (
         <>
-            <header className="bg-[url(../public/images/bg-header-mobile.svg)] bg-center bg-cover h-40 w-full bg-c-green-400 "></header>
+            <header className="bg-[url(../public/images/bg-header-mobile.svg)] bg-center bg-cover w-full bg-c-green-400 h-40"></header>
 
-            <main className="bg-c-green-50 items-center py-8 min-h-screen">
+            <main className="bg-c-green-50 flow-root pt-8">
                 <div
-                    className={`rounded-md min-h-14 relative -top-15 -mb-9 py-5 ps-5 pe-7 bg-white flex items-center justify-between gap-5 w-9/10 mx-auto max-w-275 shadow-c-shadow ${filters.length < 1 ? "opacity-0" : "opacity-100"}`}
+                    className={`rounded-md min-h-14 relative -mt-18 mb-7 py-5 ps-5 pe-7 bg-white flex items-center justify-between gap-5 w-9/10 mx-auto max-w-275 shadow-c-shadow ${filters.length < 1 ? "opacity-0 hidden" : "opacity-100 "}`}
                 >
-                    <ul className="flex gap-4 flex-wrap ">
+                    <ul className="flex gap-4 flex-wrap">
                         {filters.map((filt) => (
                             <li
-                                className="flex bg-c-green-50 items-center "
+                                className="flex bg-c-green-50 items-center"
                                 key={filt}
                             >
                                 <p className="py-1.75 ps-1.75 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-l-[0.3125rem] leading-0">
@@ -80,10 +78,11 @@ function App() {
                 </div>
 
                 <section>
-                    <ul className="py-4 flex flex-col w-full items-center gap-9.5 p-6">
+                    <ul className="flex flex-col w-full items-center gap-10 p-6">
                         {filteredJobs.map((job) => (
                             <li
-                                className={`${job.featured ? "border-l-5 border-l-c-green-400" : ""} rounded-md min-h-14 relative pt-8 px-6 pb-6 bg-white flex flex-col  gap-5 w-full max-w-275 shadow-c-shadow `}
+                                key={job.company}
+                                className={` border-l-5  ${job.featured ? "border-l-c-green-400" : "border-l-white"} rounded-md min-h-14 relative pt-8 px-6 pb-6 bg-white flex flex-col  gap-5 w-full max-w-275 shadow-c-shadow `}
                             >
                                 <div>
                                     <div className="w-12 h-12 absolute -top-6.5">
@@ -124,14 +123,14 @@ function App() {
                                 </div>
                                 <div className="flex flex-wrap gap-4">
                                     <span
-                                        className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400"
+                                        className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400 cursor-pointer"
                                         onClick={() => addFilter(job.role)}
                                     >
                                         {job.role}
                                     </span>
 
                                     <span
-                                        className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400"
+                                        className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400 cursor-pointer"
                                         onClick={() => addFilter(job.level)}
                                     >
                                         {job.level}
@@ -139,7 +138,8 @@ function App() {
 
                                     {job.languages.map((lang: string) => (
                                         <span
-                                            className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400"
+                                            key={lang}
+                                            className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400 cursor-pointer"
                                             onClick={() => addFilter(lang)}
                                         >
                                             {lang}
@@ -148,7 +148,8 @@ function App() {
 
                                     {job.tools.map((tool: string) => (
                                         <span
-                                            className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400"
+                                            key={tool}
+                                            className="py-2 ps-2 pe-3.5 text-c-green-400 font-bold text-[0.9375rem] rounded-[0.3125rem]  bg-c-green-150 hover:text-c-green-50 hover:bg-c-green-400 cursor-pointer"
                                             onClick={() => addFilter(tool)}
                                         >
                                             {tool}
