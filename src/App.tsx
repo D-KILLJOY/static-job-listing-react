@@ -44,7 +44,7 @@ function App() {
     return (
         <>
             <header className="bg-[url(../public/images/bg-header-mobile.svg)] bg-center bg-cover w-full bg-c-green-400 h-39 md:bg-[url(../public/images/bg-header-desktop.svg)]">
-                <h1 className="hidden">Static Jobs</h1>
+                <h1 className="absolute -top-full">Static Jobs</h1>
             </header>
 
             <main className="bg-c-green-50 flow-root pt-8">
